@@ -54,6 +54,7 @@ public class ProductServlet extends javax.servlet.http.HttpServlet {
                 showDeleteForm(request, response);
                 break;
             case "view":
+                viewCustomer(request, response);
                 break;
             default:
                 listProducts(request, response);
@@ -183,6 +184,25 @@ public class ProductServlet extends javax.servlet.http.HttpServlet {
                 e.printStackTrace();
             }
 
+        }
+   }
+
+   private void viewCustomer(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        }else {
+            request.setAttribute("product", product);
+            dispatcher = request.getRequestDispatcher("product/view.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        }catch (ServletException e) {
+            e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
         }
    }
 }
