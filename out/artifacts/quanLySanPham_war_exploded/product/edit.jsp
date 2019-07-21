@@ -9,21 +9,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Edit customer</title>
+    <title>Edit product</title>
 </head>
 <body>
-<h1>Edit customer</h1>
+<h1>Edit Product</h1>
 <p>
     <c:if test='${requestScope["message"]!=null}'>
         <span class="message">${requestScope["message"]}</span>
     </c:if>
 </p>
 <p>
-    <a href="/products">Back to customer list</a>
+    <a href="/products">Back to Product list</a>
 </p>
 <form method="post">
     <fieldset>
-        <legend>Customer information</legend>
+        <legend>Product information</legend>
         <table>
             <tr>
                 <td>Name Product:</td>
